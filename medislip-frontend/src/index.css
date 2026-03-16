@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --auth-ink: #0f172a;
+  --auth-muted: #475569;
+  --auth-panel: rgba(255, 255, 255, 0.85);
+  --auth-line: rgba(148, 163, 184, 0.3);
+  --auth-shadow: 0 24px 60px rgba(15, 23, 42, 0.15);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--auth-ink);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.auth-layout {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.auth-ambient::before,
+.auth-ambient::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(40px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.auth-ambient::before {
+  width: 380px;
+  height: 380px;
+  top: -120px;
+  left: -100px;
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.9), rgba(56, 189, 248, 0));
+}
+
+.auth-ambient::after {
+  width: 420px;
+  height: 420px;
+  bottom: -170px;
+  right: -140px;
+  background: radial-gradient(circle at center, rgba(45, 212, 191, 0.8), rgba(45, 212, 191, 0));
+}
+
+.auth-panel {
+  background: var(--auth-panel);
+  border: 1px solid var(--auth-line);
+  box-shadow: var(--auth-shadow);
+  backdrop-filter: blur(16px);
+}
+
+.auth-input {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #cbd5e1;
+  border-radius: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.auth-input:focus {
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.auth-float {
+  animation: auth-rise 0.5s ease both;
+}
+
+@keyframes auth-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
